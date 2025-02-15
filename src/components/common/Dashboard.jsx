@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import ContactGrid from "../contacts/ContactGrid";
 import { useAuth } from "../AuthContext";
 import { ColorModeButton } from "@/components/ui/color-mode";
+import CreateContactModal from "../contacts/CreateContactModal";
+import { RiContactsBook3Fill } from "react-icons/ri";
 
 const UserDashboard = () => {
   const [user, setUser] = useState(sessionStorage.getItem("user"));
@@ -40,9 +42,16 @@ const UserDashboard = () => {
                 onClick={() => navigate("/dashboard/contacts")}
                 variant="outline"
               >
-                View All Contacts
+                <Box display={{ base: "block", md: "none" }}>
+                  <RiContactsBook3Fill />
+                </Box>
+
+                <Box display={{ base: "none", md: "block" }}>
+                  View All Contacts
+                </Box>
               </Button>
               <ColorModeButton />
+              <CreateContactModal setContacts={setContacts} />
             </Flex>
             <Flex alignItems={"center"} justifyContent={"center"} gap={2}>
               <Box position="relative">
