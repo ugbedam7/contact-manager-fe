@@ -1,14 +1,52 @@
-import { Box, Card, Flex, Heading, Text, Icon } from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Text, Icon, Button } from "@chakra-ui/react";
 import { BiTrash } from "react-icons/bi";
-import { Avatar } from "@/components/ui/avatar";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import EditContact from "./EditContactModal";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../App";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@/components/ui/tooltip";
+import ContactImage from "../common/ContactImage";
+import { useState } from "react";
+import { GrUpdate } from "react-icons/gr";
 
 const ContactCard = ({ contact, setContacts, cardMinWidth }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [contactImg, setContactImg] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Update Image
+  const updateContactImage = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    if (!selectedFile) return;
+
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    try {
+      const res = await fetch(`${BASE_URL}/api/contacts/${contact._id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("authToken")}`
+        },
+        body: formData
+      });
+
+      const result = await res.json();
+
+      contact = result.contact;
+      if (!res.ok) throw new Error(result.error);
+
+      toast.success(result.message);
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setIsLoading(false);
+      setSelectedFile(null);
+    }
+  };
+
   const handleDeleteContact = async () => {
     try {
       const res = await fetch(`${BASE_URL}/api/contacts/${contact._id}`, {
@@ -19,7 +57,6 @@ const ContactCard = ({ contact, setContacts, cardMinWidth }) => {
       });
 
       const result = await res.json();
-
       if (!res.ok) {
         throw new Error(result.error);
       }
@@ -45,16 +82,23 @@ const ContactCard = ({ contact, setContacts, cardMinWidth }) => {
     >
       <Card.Header>
         <Flex gap={4}>
-          <Link
-            to={`/dashboard/${contact._id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <Flex flex={"1"} gap={"4"} alignItems={"start"}>
-              <Avatar src={contact.imgUrl} />
+          <Flex flex={"1"} gap={"4"} alignItems={"start"}>
+            <ContactImage
+              contact={contact}
+              contactImg={contactImg}
+              setContactImg={setContactImg}
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
+            />
+
+            <Link
+              to={`/dashboard/${contact._id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               <Box>
                 <Heading
                   fontWeight="semibold"
-                  textStyle="xl"
+                  textStyle="lg"
                   whiteSpace="nowrap"
                   overflow="hidden"
                   textOverflow="ellipsis"
@@ -78,19 +122,47 @@ const ContactCard = ({ contact, setContacts, cardMinWidth }) => {
                   {contact.address}
                 </Text>
               </Box>
-            </Flex>
-          </Link>
-          <Flex gap={1} justifyContent="flex-end" minWidth="fit-content">
-            <EditContact contact={contact} setContacts={setContacts} />
+            </Link>
+          </Flex>
 
-            <Icon
-              fontSize="21px"
-              color={"tomato"}
-              cursor={"pointer"}
-              onClick={handleDeleteContact}
-            >
-              <BiTrash />
-            </Icon>
+          <Flex gap={1} justifyContent="flex-end" minWidth="fit-content">
+            {!selectedFile && (
+              <>
+                <EditContact contact={contact} setContacts={setContacts} />
+
+                <Icon
+                  fontSize="21px"
+                  color={"tomato"}
+                  cursor={"pointer"}
+                  onClick={handleDeleteContact}
+                >
+                  <BiTrash />
+                </Icon>
+              </>
+            )}
+
+            {selectedFile && (
+              <Button
+                size={"sm"}
+                type="submit"
+                bg={"cyan.400"}
+                borderRadius={4}
+                onClick={updateContactImage}
+              >
+                {isLoading ? (
+                  <Flex justifyContent={"center"}>
+                    <img
+                      src="/spinner.gif"
+                      alt="spinner"
+                      height={25}
+                      width={25}
+                    />
+                  </Flex>
+                ) : (
+                  <GrUpdate />
+                )}
+              </Button>
+            )}
           </Flex>
         </Flex>
       </Card.Header>
