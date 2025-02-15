@@ -36,7 +36,6 @@ const ContactView = ({ contact, setContact }) => {
   const [contactImg, setContactImg] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const [showTooltip, setShowTooltip] = useState(true);
 
   useEffect(() => {
@@ -174,19 +173,7 @@ const ContactView = ({ contact, setContact }) => {
                     {contact.firstname}
                     {""} {contact.lastname}
                   </Text>
-                  {/* <Tooltip content={contact.email} showArrow>
-                    <Text
-                      color={textColor}
-                      textStyle="lg"
-                      marginBottom={"0"}
-                      whiteSpace="nowrap"
-                      overflow="hidden"
-                      textOverflow="ellipsis"
-                      maxWidth="200px"
-                    >
-                      {contact.email}
-                    </Text>
-                  </Tooltip> */}
+
                   {showTooltip ? (
                     <Tooltip content={contact.email} showArrow>
                       <Text
