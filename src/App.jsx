@@ -17,7 +17,7 @@ import ContactDetails from "./components/contacts/ContactDetails";
 import UserDashboard from "./components/common/Dashboard";
 import ContactsList from "./components/common/ContactsList";
 
-// export const BASE_URL = "http://localhost:5000";
+//export const BASE_URL = "http://localhost:5000";
 export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
 
 function App() {
@@ -51,14 +51,7 @@ function MainLayout() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/dashboard/:id"
-          element={
-            <ProtectedRoute>
-              <ContactDetails />
-            </ProtectedRoute>
-          }
-        />
+
         <Route
           path="/dashboard"
           element={
@@ -73,6 +66,14 @@ function MainLayout() {
           element={
             <ProtectedRoute>
               <ContactsList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/:id"
+          element={
+            <ProtectedRoute>
+              <ContactDetails />
             </ProtectedRoute>
           }
         />
