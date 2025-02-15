@@ -1,6 +1,6 @@
-import { Container, Form, Button } from 'react-bootstrap';
-import { Element } from 'react-scroll';
-import { motion } from 'framer-motion';
+import { Container, Form, Button } from "react-bootstrap";
+import { Element } from "react-scroll";
+import { motion } from "framer-motion";
 
 const fadeInVariant = {
   hidden: { opacity: 0, y: 50 },
@@ -15,18 +15,20 @@ const ContactUs = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInVariant}>
+          variants={fadeInVariant}
+        >
           <h2 className="text-center mb-4">Contact Us</h2>
 
           <p
             className="text-center fs-5 text-muted mx-auto"
-            style={{ maxWidth: '700px' }}>
+            style={{ maxWidth: "700px" }}
+          >
             Have questions or need support? Get in touch with our team, and
             we’ll be happy to help!
           </p>
         </motion.div>
 
-        <Form className="mx-auto" style={{ maxWidth: '500px' }}>
+        <Form className="mx-auto" style={{ maxWidth: "500px" }}>
           <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" placeholder="Enter your name" />
@@ -44,8 +46,9 @@ const ContactUs = () => {
 
           <Button
             className="border-0"
-            style={{ backgroundColor: '#1A202C' }}
-            type="submit">
+            style={{ backgroundColor: "#3b82f6" }}
+            type="submit"
+          >
             Send Message
           </Button>
         </Form>
