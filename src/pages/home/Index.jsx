@@ -6,6 +6,8 @@ import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import Footer from "../../components/common/Footer";
 import { Stack } from "@chakra-ui/react";
+import Statistics from "./Statistics";
+import Leadership from "./Leadership";
 
 const Home = () => {
   return (
@@ -57,6 +59,8 @@ const Home = () => {
 
       <HowItWorks />
       <PlatformFeatures />
+      <Statistics />
+      <Leadership />
       <AboutUs />
       <ContactUs />
       <Footer />
