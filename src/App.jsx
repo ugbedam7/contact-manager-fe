@@ -10,11 +10,12 @@ import Navbar from "./components/common/Navbar";
 import Home from "./pages/home/Index";
 import { SignUp } from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
-import Dashboard from "./components/common/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./components/AuthContext";
 import { ToastContainer } from "react-toastify";
 import ContactDetails from "./components/contacts/ContactDetails";
+import UserDashboard from "./components/common/Dashboard";
+import ContactsList from "./components/common/ContactsList";
 
 // export const BASE_URL = "http://localhost:5000";
 export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
@@ -38,7 +39,8 @@ function MainLayout() {
 
   const hideNavbar =
     location.pathname === "/dashboard" ||
-    matchPath("/dashboard/:id", location.pathname);
+    location.pathname === "/dashboard/contacts" ||
+    matchPath("/dashboard/:id", location.pathname) !== null;
 
   return (
     <div>
@@ -61,7 +63,16 @@ function MainLayout() {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <UserDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/contacts"
+          element={
+            <ProtectedRoute>
+              <ContactsList />
             </ProtectedRoute>
           }
         />
