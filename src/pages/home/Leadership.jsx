@@ -69,7 +69,7 @@ const Leadership = () => {
               overflow="hidden"
               gap={4}
               pb={6}
-              h="500px" // Set uniform height for all cards
+              h="450px" // Set uniform height for all cards
               display="flex"
               flexDirection="column"
               justifyContent="space-between"
@@ -97,7 +97,7 @@ const Leadership = () => {
                     { icon: FaInstagram, link: "#" }
                   ].map(({ icon, link }, i) => (
                     <Link key={i} href={link} isExternal>
-                      <Circle size="40px" bg="#3b82f6" color="white">
+                      <Circle size="33px" bg="#3b82f6" color="white">
                         <Icon as={icon} boxSize={5} />
                       </Circle>
                     </Link>
