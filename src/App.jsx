@@ -18,8 +18,8 @@ import UserDashboard from "./components/common/Dashboard";
 import ContactsList from "./components/common/ContactsList";
 import ProfilePage from "./components/common/UserProfile";
 
-//export const BASE_URL = "http://localhost:5000";
-export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
+export const BASE_URL = "http://localhost:5000";
+//export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
 
 function App() {
   return (
@@ -50,18 +50,6 @@ function MainLayout() {
       <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <UserDashboard />
-            </ProtectedRoute>
-          }
-        />
-
         <Route
           path="/profile"
           element={
@@ -70,7 +58,16 @@ function MainLayout() {
             </ProtectedRoute>
           }
         />
-
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <UserDashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/dashboard/contacts"
           element={

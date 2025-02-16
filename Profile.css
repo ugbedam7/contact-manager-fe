@@ -15,7 +15,7 @@
 
 /* Dashboard Styling */
 .dashboard {
-  flex-grow: 1;
+  justify-content: center;
   background-color: #f8f9fa;
   padding: 20px;
 }

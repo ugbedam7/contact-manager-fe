@@ -7,8 +7,15 @@ export const AuthProvider = ({ children }) => {
   // Initialize isAuthenticated based on session storage
   const storedToken = sessionStorage.getItem("authToken");
   const [isAuthenticated, setIsAuthenticated] = useState(!!storedToken);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // Load user from sessionStorage when app starts
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(storedUser);
+    }
+
     // Check authentication from session storage or API
     const token = sessionStorage.getItem("authToken");
     if (token) {
@@ -30,10 +37,11 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.removeItem("user");
     delete axios.defaults.headers.common["Authorization"];
     setIsAuthenticated(false);
+    setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
