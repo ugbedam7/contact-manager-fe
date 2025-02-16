@@ -65,7 +65,7 @@ const Leadership = () => {
             <VStack
               bg="white"
               borderRadius="md"
-              boxShadow="lg"
+              boxShadow="sm"
               overflow="hidden"
               gap={4}
               pb={6}
@@ -73,6 +73,7 @@ const Leadership = () => {
               display="flex"
               flexDirection="column"
               justifyContent="space-between"
+              className="hover-scale"
             >
               <Image
                 src={leader.image}

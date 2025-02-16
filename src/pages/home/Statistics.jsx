@@ -62,7 +62,13 @@ const Statistics = () => {
             transition={{ duration: 0.8, delay: index * 0.2 }}
             viewport={{ once: true }}
           >
-            <VStack bg="white" p={6} borderRadius="md" boxShadow="lg">
+            <VStack
+              bg="white"
+              p={6}
+              borderRadius="md"
+              boxShadow="sm"
+              className="hover-scale"
+            >
               <Counter targetValue={stat.value} />
               <Text fontSize="lg" color="gray.600">
                 {stat.label}
