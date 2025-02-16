@@ -8,7 +8,7 @@ import {
   Button
 } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
-import { FiBell, FiLogOut } from "react-icons/fi";
+import { FiBell } from "react-icons/fi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ContactGrid from "../contacts/ContactGrid";
@@ -16,17 +16,13 @@ import { useAuth } from "../AuthContext";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import CreateContactModal from "../contacts/CreateContactModal";
 import { RiContactsBook3Fill } from "react-icons/ri";
+import Menu from "./Menu";
 
 const UserDashboard = () => {
   const [user, setUser] = useState(sessionStorage.getItem("user"));
   const [contacts, setContacts] = useState([]);
-  const { logout, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   // Centralized color and background values
   const bgColor = useColorModeValue("gray.200", "gray.700");
@@ -84,9 +80,7 @@ const UserDashboard = () => {
                   {user}
                 </Box>
               </Flex>
-              <Button variant="outline" onClick={handleLogout}>
-                <FiLogOut />
-              </Button>
+              <Menu />
             </Flex>
           </Flex>
         </Box>
