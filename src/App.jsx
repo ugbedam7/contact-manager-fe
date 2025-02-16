@@ -62,14 +62,14 @@ function MainLayout() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/profile"
           element={
             <ProtectedRoute>
               <ProfilePage />
             </ProtectedRoute>
           }
-        />
+        /> */}
 
         <Route
           path="/dashboard/contacts"
