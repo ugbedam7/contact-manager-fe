@@ -18,8 +18,8 @@ import UserDashboard from "./components/common/Dashboard";
 import ContactsList from "./components/common/ContactsList";
 import ProfilePage from "./components/common/UserProfile";
 
-export const BASE_URL = "http://localhost:5000";
-//export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
+//export const BASE_URL = "http://localhost:5000";
+export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
 
 function App() {
   return (
