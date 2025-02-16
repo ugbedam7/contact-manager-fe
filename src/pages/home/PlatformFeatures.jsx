@@ -5,14 +5,14 @@ import {
   FaClock,
   FaLock,
   FaMobileAlt,
-  FaSearch,
+  FaSearch
 } from "react-icons/fa";
 import { Element } from "react-scroll";
 import { motion } from "framer-motion";
 
 const fadeInVariant = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9 } }
 };
 
 const PlatformFeatures = () => {
@@ -42,37 +42,37 @@ const PlatformFeatures = () => {
             {
               icon: <FaSync />,
               title: "Smart Contact Importing",
-              desc: "Sync from multiple sources easily.",
+              desc: "Sync from multiple sources easily."
             },
             {
               icon: <FaSearch />,
               title: "Advanced Search",
-              desc: "Find contacts with powerful filters.",
+              desc: "Find contacts with powerful filters."
             },
             {
               icon: <FaClock />,
               title: "Automated Follow-Ups",
-              desc: "Never miss a conversation.",
+              desc: "Never miss a conversation."
             },
             {
               icon: <FaUsers />,
               title: "Activity Timeline",
-              desc: "Track past interactions at a glance.",
+              desc: "Track past interactions at a glance."
             },
             {
               icon: <FaLock />,
               title: "Enterprise-Grade Security",
-              desc: "End-to-end encrypted data.",
+              desc: "End-to-end encrypted data."
             },
             {
               icon: <FaMobileAlt />,
               title: "Multi-Device Access",
-              desc: "Use across desktop, tablet, and mobile.",
-            },
+              desc: "Use across desktop, tablet, and mobile."
+            }
           ].map((item, idx) => (
             <Col md={6} lg={4} key={idx}>
               <Card className="shadow-sm text-center border-0 p-3 bg-light hover-scale">
-                <div className="fs-3" style={{ color: "#1A202C" }}>
+                <div className="fs-3" style={{ color: "#3b82f6" }}>
                   {item.icon}
                 </div>
                 <Card.Body>
