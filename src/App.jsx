@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import ContactDetails from "./components/contacts/ContactDetails";
 import UserDashboard from "./components/common/Dashboard";
 import ContactsList from "./components/common/ContactsList";
+import ProfilePage from "./components/common/UserProfile";
 
 //export const BASE_URL = "http://localhost:5000";
 export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
@@ -57,6 +58,15 @@ function MainLayout() {
           element={
             <ProtectedRoute>
               <UserDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         />
