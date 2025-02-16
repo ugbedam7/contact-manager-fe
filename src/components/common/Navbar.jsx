@@ -2,8 +2,18 @@ import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { Nav } from "react-bootstrap";
 import { ContactVaultLogo } from "../svgs/Logo";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark w-100 fixed-top shadow-sm p-3 mb-5 rounded"
@@ -79,8 +89,30 @@ const Navbar = () => {
                 Features
               </Nav.Link>
             </li>
+            {user ? (
+              <li className="d-flex align-items-center gap-2 text-white">
+                <span>{user}</span>
+                <img
+                  src="./sample.png"
+                  alt="User Avatar"
+                  className="rounded-circle"
+                  width="40"
+                  height="40"
+                />
+              </li>
+            ) : (
+              <li className="d-flex">
+                <Link
+                  to="/signup"
+                  className="btn text-white"
+                  style={{ backgroundColor: "#3b82f6" }}
+                >
+                  Sign Up
+                </Link>
+              </li>
+            )}
 
-            <li className="d-flex">
+            {/* <li className="d-flex">
               <Link
                 to="/signup"
                 className="btn text-white "
@@ -88,7 +120,7 @@ const Navbar = () => {
               >
                 Sign Up
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
