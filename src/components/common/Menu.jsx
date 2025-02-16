@@ -21,7 +21,7 @@ const Menu = () => {
 
   // Centralized color and background values
   const bgColor = useColorModeValue("gray.200", "gray.700");
-  const textColor = useColorModeValue("gray.900", "white");
+
   return (
     <MenuRoot>
       <MenuTrigger asChild>
@@ -31,7 +31,11 @@ const Menu = () => {
       </MenuTrigger>
       <MenuContent>
         <Box bg={bgColor} p={2} borderRadius="sm">
-          <MenuItem value="profile" cursor={"pointer"}>
+          <MenuItem
+            value="profile"
+            cursor={"pointer"}
+            onClick={() => navigate("/profile")}
+          >
             Profile
           </MenuItem>
           <MenuItem value="settings" cursor={"pointer"}>
