@@ -30,10 +30,14 @@ const Menu = () => {
         </Button>
       </MenuTrigger>
       <MenuContent>
-        <Box bg={bgColor} p={2} borderRadius="md">
-          <MenuItem value="profile">Profile</MenuItem>
-          <MenuItem value="settings">Settings</MenuItem>
-          <MenuItem value="logout" onClick={handleLogout}>
+        <Box bg={bgColor} p={2} borderRadius="sm">
+          <MenuItem value="profile" cursor={"pointer"}>
+            Profile
+          </MenuItem>
+          <MenuItem value="settings" cursor={"pointer"}>
+            Settings
+          </MenuItem>
+          <MenuItem value="logout" cursor={"pointer"} onClick={handleLogout}>
             Logout
           </MenuItem>
         </Box>
