@@ -1,22 +1,11 @@
-import { useState } from "react";
 import { FaCog, FaChartBar, FaSignOutAlt } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import { RxDashboard } from "react-icons/rx";
-import { Box, Text, VStack, HStack, Icon, Flex, Stack } from "@chakra-ui/react";
-import { Avatar } from "@/components/ui/avatar";
+import { Box, Text, VStack, HStack, Icon } from "@chakra-ui/react";
 import "../../../Profile.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-
-const ContactDetailItem = ({ label, value }) => (
-  <Flex justify="space-between" w="full">
-    <Text flex={"1"} fontWeight="bold" className="contact-view">
-      {label}
-    </Text>
-    <Text flex={"1"} className="contact-view">
-      {value}
-    </Text>
-  </Flex>
-);
+import { Outlet } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -32,10 +21,11 @@ const Sidebar = () => {
   };
 
   const menuItems = [
+    { name: "Profile", icon: CgProfile, path: "/user/profile" },
     { name: "Dashboard", icon: RxDashboard, action: handleDashboardNavigation },
-    { name: "Settings", icon: FaCog },
-    { name: "Analytics", icon: FaChartBar },
-    { name: "Logout", icon: FaSignOutAlt, action: handleLogout }
+    { name: "Settings", icon: FaCog, path: "/user/settings" },
+    { name: "Analytics", icon: FaChartBar, path: "/user/analytics" },
+    { name: "Logout", icon: FaSignOutAlt, action: handleLogout },
   ];
 
   return (
@@ -43,16 +33,16 @@ const Sidebar = () => {
       className="sidebar text-white p-4"
       style={{ backgroundColor: "#1A1F2B" }}
     >
-      <VStack align="start" mt={10} pt={10}>
+      <VStack align="start" mt={10} pt={20}>
         {menuItems.map((item, index) => (
           <HStack
             key={index}
             className="menu-item px-4  rounded"
             gap={3}
             cursor="pointer"
-            onClick={item.action ? item.action : null}
+            onClick={() => (item.action ? item.action() : navigate(item.path))}
           >
-            <Icon as={item.icon} boxSize={5} />
+            <Icon as={item.icon} boxSize={7} />
             <Text pt={3}>{item.name}</Text>
           </HStack>
         ))}
@@ -61,48 +51,13 @@ const Sidebar = () => {
   );
 };
 
-const Dashboard = () => {
-  const [user, setUser] = useState({
-    firstname: "John",
-    lastname: "Doe",
-    email: "johndoe@example.com",
-    twitter: "@johndoe",
-    bio: "Software Developer. Tech Enthusiast. Coffee Lover.",
-    profileImage: "https://via.placeholder.com/150"
-  });
-
-  return (
-    <Box className="dashboard p-4">
-      <Box className="card p-4 shadow d-flex flex-column align-items-center mb-4">
-        <Avatar
-          borderRadius="full"
-          boxSize="120px"
-          src={"./sample.png"}
-          alt={user.name}
-          mb={3}
-        />
-      </Box>
-      <Box className="card p-4 shadow">
-        <Text fontSize="2xl" textAlign={"center"} fontWeight="semibold" mb={3}>
-          Contact Information
-        </Text>
-        <Stack spacing={3}>
-          <ContactDetailItem label="Name" value={user.firstname} />
-          <ContactDetailItem label="Name" value={user.lastname} />
-          <ContactDetailItem label="Email" value={user.email} />
-          <ContactDetailItem label="Twitter" value={user.twitter} />
-          <ContactDetailItem label="Bio" value={user.bio} />
-        </Stack>
-      </Box>
-    </Box>
-  );
-};
-
 const ProfilePage = () => {
   return (
-    <div className="d-flex h-100">
+    <div className="d-flex h-auto vh-100">
       <Sidebar />
-      <Dashboard />
+      <Box flex="1">
+        <Outlet />
+      </Box>
     </div>
   );
 };
