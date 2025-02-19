@@ -7,7 +7,7 @@ import {
   MenuContent,
   MenuItem,
   MenuRoot,
-  MenuTrigger
+  MenuTrigger,
 } from "@/components/ui/menu";
 
 const Menu = () => {
@@ -34,11 +34,15 @@ const Menu = () => {
           <MenuItem
             value="profile"
             cursor={"pointer"}
-            onClick={() => navigate("/profile")}
+            onClick={() => navigate("/user/profile")}
           >
             Profile
           </MenuItem>
-          <MenuItem value="settings" cursor={"pointer"}>
+          <MenuItem
+            value="settings"
+            cursor={"pointer"}
+            onClick={() => navigate("/user/settings")}
+          >
             Settings
           </MenuItem>
           <MenuItem value="logout" cursor={"pointer"} onClick={handleLogout}>
