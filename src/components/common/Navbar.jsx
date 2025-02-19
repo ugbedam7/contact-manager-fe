@@ -86,12 +86,19 @@ const Navbar = () => {
               <li className="d-flex align-items-center gap-2 text-white">
                 <span>{user}</span>
                 <img
-                  src="./sample.png"
+                  src="/sample.png"
                   alt="User Avatar"
                   className="rounded-circle"
                   width="40"
                   height="40"
                 />
+                <Link
+                  to="/dashboard"
+                  className="btn text-white"
+                  style={{ backgroundColor: "#3b82f6" }}
+                >
+                  Dashboard
+                </Link>
               </li>
             ) : (
               <li className="d-flex">
