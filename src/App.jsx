@@ -3,7 +3,7 @@ import {
   matchPath,
   Route,
   Routes,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/common/Navbar";
@@ -17,6 +17,10 @@ import ContactDetails from "./components/contacts/ContactDetails";
 import UserDashboard from "./components/common/Dashboard";
 import ContactsList from "./components/common/ContactsList";
 import ProfilePage from "./components/common/UserProfile";
+import Settings from "./components/common/Settings";
+import { Outlet } from "react-router-dom";
+import Analytics from "./components/common/Analytics";
+import Profile from "./components/common/Profile";
 
 //export const BASE_URL = "http://localhost:5000";
 export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
@@ -50,14 +54,41 @@ function MainLayout() {
       <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
-          path="/profile"
+          path="/user"
           element={
             <ProtectedRoute>
               <ProfilePage />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="analytics"
+            element={
+              <ProtectedRoute>
+                <Analytics />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route
