@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const fadeInVariant = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9 } },
 };
 
 const HowItWorks = () => {
@@ -31,25 +31,25 @@ const HowItWorks = () => {
           {
             icon: <FaSync />,
             title: "Import & Sync",
-            desc: "Sync contacts from email, CRM, or phone."
+            desc: "Sync contacts from email, CRM, or phone.",
           },
           {
             icon: <FaTag />,
             title: "Organize Contacts",
-            desc: "Tag, group, and customize contact details."
+            desc: "Tag, group, and customize contact details.",
           },
           {
             icon: <FaClock />,
             title: "Track Interactions",
-            desc: "Log calls, emails, and meetings easily."
+            desc: "Log calls, emails, and meetings easily.",
           },
           {
             icon: <FaUsers />,
             title: "Collaborate",
-            desc: "Share contacts and notes with your team."
-          }
+            desc: "Share contacts and notes with your team.",
+          },
         ].map((item, idx) => (
-          <Col md={6} lg={3} key={idx}>
+          <Col md={6} lg={4} key={idx}>
             <Card className="shadow-sm text-center border-0 p-3 bg-light hover-scale">
               <div className="fs-3" style={{ color: "#3b82f6" }}>
                 {item.icon}
