@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { BASE_URL } from "../../App";
 import SmallContactVaultLogo from "../../components/svgs/Logo";
+import logo1 from "../../assets/images/logo1.png";
 
 export const SignUp = () => {
   const [isLoginActive, setLoginActive] = useState(false);
@@ -12,7 +13,7 @@ export const SignUp = () => {
     firstname: "",
     lastname: "",
     email: "",
-    password: ""
+    password: "",
   });
 
   useEffect(() => {
@@ -43,16 +44,16 @@ export const SignUp = () => {
       firstname: data.firstname,
       lastname: data.lastname,
       email: data.email,
-      password: data.password
+      password: data.password,
     };
 
     try {
       const res = await fetch(`${BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(userData),
       });
 
       const result = await res.json();
@@ -91,8 +92,8 @@ export const SignUp = () => {
           >
             <form onSubmit={register}>
               <div className="d-flex flex-column align-items-center justify-content-center text-center pb-3">
-                <div className="d-flex align-content-center justify-content-center">
-                  <SmallContactVaultLogo />
+                <div className="d-flex align-content-center justify-content-center mb-2">
+                  <img src={logo1} alt="logo" height={"40px"} width={"40px"} />
                 </div>
                 <h1 className="text-3xl font-semibold">Create Account</h1>
               </div>
@@ -167,7 +168,7 @@ export const SignUp = () => {
                 >
                   Sign Up
                 </button>
-                <p className="small fw-bold mt-2 pt-1 mb-0">
+                <p className="small fw-bold mt-2 pt-1">
                   Already Have An Account?
                   <Link
                     className={`${isLoginActive ? "text-white" : "text-dark"}`}

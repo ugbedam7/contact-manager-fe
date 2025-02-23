@@ -3,6 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { Nav } from "react-bootstrap";
 import { ContactVaultLogo } from "../svgs/Logo";
 import { useAuth } from "../AuthContext";
+import logo1 from "../../assets/images/logo1.png";
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -18,7 +19,7 @@ const Navbar = () => {
           to="/"
         >
           <div className="logo-container">
-            <ContactVaultLogo />
+            <img src={logo1} alt="logo" height={"70px"} width={"70px"} />
           </div>
         </Link>
         <button
@@ -84,7 +85,6 @@ const Navbar = () => {
             </li>
             {user ? (
               <li className="d-flex align-items-center gap-2 text-white">
-                <span>{user}</span>
                 <img
                   src="/sample.png"
                   alt="User Avatar"

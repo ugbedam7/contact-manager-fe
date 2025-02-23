@@ -6,11 +6,12 @@ import { useAuth } from "../../components/AuthContext";
 import { BASE_URL } from "../../App";
 import "../../../Auth.css";
 import { SmallContactVaultLogo } from "../../components/svgs/Logo";
+import logo1 from "../../assets/images/logo1.png";
 
 const Login = () => {
   const [data, setData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -57,8 +58,8 @@ const Login = () => {
           <div className="col-md-8 col-lg-6 col-xl-4 login log-in auth-card">
             <form onSubmit={handleLogin}>
               <div className="d-flex flex-column align-content-center justify-content-center text-center pb-3">
-                <div className="d-flex align-content-center justify-content-center">
-                  <SmallContactVaultLogo />
+                <div className="d-flex align-content-center justify-content-center mb-2">
+                  <img src={logo1} alt="logo" height={"40px"} width={"40px"} />
                 </div>
 
                 <h1 className="text-3xl font-semibold ">Login</h1>
