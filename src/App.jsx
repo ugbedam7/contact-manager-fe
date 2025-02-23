@@ -18,11 +18,10 @@ import UserDashboard from "./components/common/Dashboard";
 import ContactsList from "./components/common/ContactsList";
 import ProfilePage from "./components/common/UserProfile";
 import Settings from "./components/common/Settings";
-import { Outlet } from "react-router-dom";
 import Analytics from "./components/common/Analytics";
 import Profile from "./components/common/Profile";
 
-//export const BASE_URL = "http://localhost:5000";
+// export const BASE_URL = "http://localhost:5000";
 export const BASE_URL = "https://contact-app-be-t5jz.onrender.com";
 
 function App() {
